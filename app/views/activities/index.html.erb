@@ -1,20 +1,17 @@
 <h2>Activities</h2>
-<ul class="list-group">
+<div class="list-group">
   <% @activities.each do |activity| %>
-    <li class="list-group-item">
-      <%= link_to activity.name, activity %>
+    <%= link_to activity, class: "list-group-item" do %>
+      <%= activity.name %>
       <span class="pull-right">
         <small style="margin-right: 16px;">
-          <%= "%0.2f" % activity.cycle_completion_hours %>
-          /
-          <%= "%0.2f" % activity.hours_per_cycle %>
-          hours
+          <%= less_ugly_decimal activity.cycle_completion_hours %>/<%= less_ugly_decimal activity.hours_per_cycle %>h
         </small>
         <%= activity.cycle_completion_percentage.to_i %>%
       </span>
-    </li>
+    <% end %>
   <% end %>
-</ul>
+</div>
 
 <h2>New activity</h2>
 <%= form_with(model: Activity.new, local: true) do |form| %>
@@ -35,14 +32,8 @@
 <% end %>
 
 <h2>Misc</h2>
-<ul class="list-group">
-  <li class="list-group-item">
-    view_cycle_duration
-  </li>
-  <li class="list-group-item">
-    archive_old_cycles
-  </li>
-  <li class="list-group-item">
-    delete_all_cycles
-  </li>
-</ul>
+<div class="list-group">
+  <%= link_to 'View cycle duration', cycle_duration_activities_path, class: "list-group-item" %>
+  <%= link_to 'Archive old cycles', archive_old_activities_path, class: "list-group-item", method: :delete, data: { confirm: 'Archive old cycles: are you sure?' } %>
+  <%= link_to 'Delete all cycles', delete_all_activities_path, class: "list-group-item", method: :delete, data: { confirm: 'Delete all cycles: are you sure?' } %>
+</div>

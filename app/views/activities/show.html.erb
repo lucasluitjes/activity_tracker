@@ -30,28 +30,22 @@
   <%= @activity.hours_per_cycle %> hours per cycle
 </p>
 
-<ul class="list-group">
-  <li class="list-group-item">
-    <%= link_to 'Back', activities_path %>
-  </li>
-  <li class="list-group-item">
-    <%= link_to 'Edit', edit_activity_path(@activity) %>
-  </li>
-  <li class="list-group-item">
-    <%= link_to 'Destroy', @activity, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </li>
-</ul>
+<div class="list-group">
+  <%= link_to 'Back', activities_path, class: "list-group-item" %>
+  <%= link_to 'Edit', edit_activity_path(@activity), class: "list-group-item" %>
+  <%= link_to 'Destroy', @activity, class: "list-group-item", method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
 
 <h3>
   Records
 </h3>
-<ul class="list-group">
+<div class="list-group">
   <% @activity.records.each do |record| %>
-    <li class="list-group-item">
-      <%= link_to record.created_at.strftime("%Y-%m-%d %H:%M"), record %>
+    <%= link_to record, class: "list-group-item" do %>
+      <%= record.created_at.strftime("%Y-%m-%d %H:%M") %>
       <span class="pull-right">
         <%= record.hours_spent %> hours
       </span>
-    </li>
+    <% end %>
   <% end %>
-</ul>
+</div>

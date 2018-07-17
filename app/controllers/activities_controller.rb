@@ -61,6 +61,15 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def cycle_duration
+    @total = Activity.all.map(&:hours_per_cycle).inject(0){|m,n|m+n}
+  end
+
+  def delete_all
+    Record.delete_all
+    redirect_to activities_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity

@@ -1,0 +1,12 @@
+<div class="list-group">
+  <%= link_to 'Back', activities_path, class: "list-group-item" %>
+</div>
+
+<% (1..16).each do |hours_per_day| %>
+  <p>
+    At <%= hours_per_day %> hours per day,
+    a cycle takes <%= less_ugly_decimal(@total/hours_per_day) %>
+    days.
+  </p>
+<% end %>
+

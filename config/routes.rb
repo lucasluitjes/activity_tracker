@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'activities#index'
   resources :records
-  resources :activities
+  resources :activities do
+    collection do
+      get "cycle_duration"
+      delete "archive_old"
+      delete "delete_all"
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

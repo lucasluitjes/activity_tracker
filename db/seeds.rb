@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+activity1 = Activity.create(name:"activity1", hours_per_cycle: 20)
+activity2 = Activity.create(name:"activity2", hours_per_cycle: 15)
+activity3 = Activity.create(name:"activity3", hours_per_cycle: 2)
+
+Record.create(hours_spent: 10, activity: activity1)
+Record.create(hours_spent: 10, activity: activity2)
+Record.create(hours_spent: 10, activity: activity3)

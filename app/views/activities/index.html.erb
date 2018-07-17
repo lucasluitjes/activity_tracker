@@ -1,29 +1,24 @@
-<p id="notice"><%= notice %></p>
+<h2>Activities</h2>
+<ul class="list-group">
+  <% @activities.each do |activity| %>
+    <li class="list-group-item">
+      <%= link_to activity.name, activity %>
+      <span class="pull-right">
+        <small>
+          <%= "%0.2f" % activity.cycle_completion_hours %>
+          /
+          <%= "%0.2f" % activity.hours_per_cycle %>
+          hours
+        </small>
+        <%= activity.cycle_completion_percentage.to_i %>%
+      </span>
+    </li>
+  <% end %>
+</ul>
 
-<h1>Activities</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Hours per cycle</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @activities.each do |activity| %>
-      <tr>
-        <td><%= activity.name %></td>
-        <td><%= activity.hours_per_cycle %></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Activity', new_activity_path %>
+<h2>Misc</h2>
+<ul class="list-group">
+  <li class="list-group-item">
+    hallo
+  </li>
+</ul>

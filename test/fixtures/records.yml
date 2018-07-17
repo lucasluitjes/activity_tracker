@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activity: one
+  hours_spent: 9.99
+
+two:
+  activity: two
+  hours_spent: 9.99

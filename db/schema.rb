@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_17_091329) do
+ActiveRecord::Schema.define(version: 2018_07_17_091703) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.decimal "hours_per_cycle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.integer "activity_id"
+    t.decimal "hours_spent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_records_on_activity_id"
   end
 
 end

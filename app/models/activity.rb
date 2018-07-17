@@ -23,4 +23,9 @@ class Activity < ApplicationRecord
   def cycle_completion_hours
     (cycle_completion_percentage / 100) * hours_per_cycle
   end
+
+  def archive_old_records! hours
+    records.each(&:destroy)
+    Record.create(hours_spent: hours, activity: self)
+  end
 end

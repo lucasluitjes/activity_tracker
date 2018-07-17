@@ -70,6 +70,16 @@ class ActivitiesController < ApplicationController
     redirect_to activities_url
   end
 
+  def archive_old
+    activities = Activity.all.map do |activity|
+      [activity, activity.cycle_completion_hours]
+    end
+    activities.each do |activity, hours|
+      activity.archive_old_records! hours
+    end
+    redirect_to activities_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity

@@ -1,5 +1,8 @@
 class Activity < ApplicationRecord
-  has_many :records
+  has_many :records, dependent: :destroy
+
+  validates :name, presence: true
+  validates :hours_per_cycle, presence: true
 
   def self.lowest_cycle
     all.map(&:current_cycle).min.to_i

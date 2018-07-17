@@ -4,7 +4,7 @@
     <li class="list-group-item">
       <%= link_to activity.name, activity %>
       <span class="pull-right">
-        <small>
+        <small style="margin-right: 16px;">
           <%= "%0.2f" % activity.cycle_completion_hours %>
           /
           <%= "%0.2f" % activity.hours_per_cycle %>
@@ -15,6 +15,24 @@
     </li>
   <% end %>
 </ul>
+
+<h2>New activity</h2>
+<%= form_with(model: Activity.new, local: true) do |form| %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :hours_per_cycle %>
+    <%= form.number_field :hours_per_cycle, step: 0.25, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: "form-control" %>
+  </div>
+<% end %>
 
 <h2>Misc</h2>
 <ul class="list-group">

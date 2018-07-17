@@ -1,5 +1,27 @@
 <p id="notice"><%= notice %></p>
 
+<h3>
+  New record
+</h3>
+<%= form_with(model: Record.new, local: true) do |form| %>
+
+  <%= form.hidden_field :activity_id, value: @activity.id %>
+
+  <div class="form-group">
+    <%= form.label :activity %>
+    <%= text_field_tag nil, :activity, value: @activity.name, disabled: true, class: "form-control" %>
+  </div>
+
+   <div class="form-group">
+    <%= form.label :hours_spent %>
+    <%= form.number_field :hours_spent, step: 0.25, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: "form-control" %>
+  </div>
+<% end %>
+
 <h2>
   <%= @activity.name %>
 </h2>
@@ -10,33 +32,15 @@
 
 <ul class="list-group">
   <li class="list-group-item">
+    <%= link_to 'Back', activities_path %>
+  </li>
+  <li class="list-group-item">
     <%= link_to 'Edit', edit_activity_path(@activity) %>
   </li>
   <li class="list-group-item">
     <%= link_to 'Destroy', @activity, method: :delete, data: { confirm: 'Are you sure?' } %>
   </li>
-  <li class="list-group-item">
-    <%= link_to 'Back', activities_path %>
-  </li>
 </ul>
-
-<h3>
-  New record
-</h3>
-<%= form_with(model: Record.new, local: true) do |form| %>
-
-  <%= form.hidden_field :activity_id, value: @activity.id %>
-
-  <div class="form-group">
-    <%= form.label :hours_spent %>
-    <%= form.number_field :hours_spent, step: 0.25, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.submit class: "form-control" %>
-  </div>
-<% end %>
-
 
 <h3>
   Records
@@ -44,7 +48,7 @@
 <ul class="list-group">
   <% @activity.records.each do |record| %>
     <li class="list-group-item">
-      <%= link_to record.created_at, record %>
+      <%= link_to record.created_at.strftime("%Y-%m-%d %H:%M"), record %>
       <span class="pull-right">
         <%= record.hours_spent %> hours
       </span>

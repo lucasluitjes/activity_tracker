@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @activities = Activity.order(hours_per_cycle: :desc).all
+    @recurring_tasks = RecurringTask.order(name: :asc).all
   end
 
   # GET /activities/1

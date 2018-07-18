@@ -37,3 +37,17 @@
   <%= link_to 'Archive old cycles', archive_old_activities_path, class: "list-group-item", method: :delete, data: { confirm: 'Archive old cycles: are you sure?' } %>
   <%= link_to 'Delete all cycles', delete_all_activities_path, class: "list-group-item", method: :delete, data: { confirm: 'Delete all cycles: are you sure?' } %>
 </div>
+
+<h3>
+  Recurring tasks
+</h3>
+<div class="list-group">
+  <% @recurring_tasks.each do |recurring_task| %>
+    <%= link_to recurring_task, class: "list-group-item" do %>
+      <%= recurring_task.name %>
+      <small class="pull-right">
+        <%= time_ago_in_words recurring_task.completed_at %> ago
+      </small>
+    <% end %>
+  <% end %>
+</div>

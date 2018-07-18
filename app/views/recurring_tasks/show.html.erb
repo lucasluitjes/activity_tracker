@@ -5,7 +5,7 @@
 </h2>
 
 <p>
-  Last completed <%= time_ago_in_words @recurring_task.completed_at %> ago.
+  Last completed <%= (Time.now.to_date - @recurring_task.completed_at.to_date).to_i  %> days ago.
 </p>
 
 <div class="list-group">

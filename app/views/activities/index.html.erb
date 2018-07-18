@@ -46,7 +46,7 @@
     <%= link_to recurring_task, class: "list-group-item" do %>
       <%= recurring_task.name %>
       <small class="pull-right">
-        <%= time_ago_in_words recurring_task.completed_at %> ago
+        <%= (Time.now.to_date - recurring_task.completed_at.to_date).to_i  %> days ago
       </small>
     <% end %>
   <% end %>

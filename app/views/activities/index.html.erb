@@ -34,6 +34,7 @@
 <h2>Misc</h2>
 <div class="list-group">
   <%= link_to 'View cycle duration', cycle_duration_activities_path, class: "list-group-item" %>
+  <%= link_to 'View past weeks', past_weeks_activities_path, class: "list-group-item" %>
   <%= link_to 'Archive old cycles', archive_old_activities_path, class: "list-group-item", method: :delete, data: { confirm: 'Archive old cycles: are you sure?' } %>
   <%= link_to 'Delete all cycles', delete_all_activities_path, class: "list-group-item", method: :delete, data: { confirm: 'Delete all cycles: are you sure?' } %>
 </div>

@@ -66,6 +66,22 @@ class ActivitiesController < ApplicationController
     @total = Activity.all.map(&:hours_per_cycle).inject(0){|m,n|m+n}
   end
 
+  def past_weeks
+    @past_week = get_records(1.week.ago, Date.today).sum(:hours_spent)
+    @two_weeks_ago = get_records(2.weeks.ago, 1.week.ago).sum(:hours_spent)
+    @three_weeks_ago = get_records(3.weeks.ago, 2.weeks.ago).sum(:hours_spent)
+    @four_weeks_ago = get_records(4.weeks.ago, 3.weeks.ago).sum(:hours_spent)
+    @last_month = get_records(1.month.ago, Date.today).sum(:hours_spent)
+    @two_months_ago = get_records(2.months.ago, 1.month.ago).sum(:hours_spent)
+    @monday = get_day_records("Monday").sum(:hours_spent)
+    @tuesday = get_day_records("Tuesday").sum(:hours_spent) 
+    @wednesday = get_day_records("Wednesday").sum(:hours_spent)
+    @thursday = get_day_records("Thursday").sum(:hours_spent)
+    @friday = get_day_records("Friday").sum(:hours_spent)
+    @saturday = get_day_records("Saturday").sum(:hours_spent)
+    @sunday = get_day_records("Sunday").sum(:hours_spent)
+  end
+
   def delete_all
     Record.delete_all
     redirect_to activities_url
@@ -90,5 +106,24 @@ class ActivitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
       params.require(:activity).permit(:name, :hours_per_cycle)
+    end
+
+    def date_of_last(day)
+      date  = Date.parse(day)
+      delta = date < Date.today ? 0 : 7
+      date - delta
+    end
+
+    def make_date_time(day, time)
+      t = Time.parse(time)
+      dt = DateTime.new(day.year, day.month, day.day, t.hour, t.min, t.sec)
+    end
+
+    def get_records(start, finish)
+      Record.all.where(:created_at => start..finish)
+    end
+
+    def get_day_records(day)
+      get_records(make_date_time(date_of_last(day), "00:00"), make_date_time(date_of_last(day), "23:59"))
     end
 end

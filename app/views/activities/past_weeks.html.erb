@@ -1,0 +1,29 @@
+<div class="list-group">
+  <%= link_to 'Back', activities_path, class: "list-group-item" %>
+</div>
+
+<p>
+  Last week you worked this many hours per day:
+  <ul>
+    <li> monday: <%= @monday %> </li>
+    <li> tuesday: <%= @tuesday %> </li>
+    <li> wednesday: <%= @wednesday %> </li>
+    <li> thursday: <%= @thursday %> </li>
+    <li> friday: <%= @friday %> </li>
+    <li> saturday: <%= @saturday %> </li>
+    <li> sunday: <%= @sunday %> </li>
+  </ul>
+  <br>
+  Last week you worked <%= less_ugly_decimal(@past_week/7) %> hours per day.
+  <br>
+  Two weeks ago you worked <%= less_ugly_decimal(@two_weeks_ago/7) %> hours per day.
+  <br>
+  Three weeks ago you worked <%= (less_ugly_decimal@three_weeks_ago/7) %> hours per day.
+  <br>
+  Four weeks ago you worked <%= less_ugly_decimal(@four_weeks_ago/7) %> hours per day.
+  <br>
+  Last month you worked <%= less_ugly_decimal(@last_month/30) %> hours per day.
+  <br>
+  Two months ago you worked <%= less_ugly_decimal(@two_months_ago/30) %> hours per day.
+  <br>
+</p>

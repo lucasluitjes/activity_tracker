@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :activities do
     collection do
       get "cycle_duration"
+      get "past_weeks"
       delete "archive_old"
       delete "delete_all"
     end

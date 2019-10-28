@@ -13,3 +13,9 @@ activity3 = Activity.create(name:"activity3", hours_per_cycle: 2)
 Record.create(hours_spent: 10, activity: activity1)
 Record.create(hours_spent: 10, activity: activity2)
 Record.create(hours_spent: 10, activity: activity3)
+
+[activity1, activity2, activity3].each do |activity|
+  (1..60).to_a.each do |i|
+    Record.create(hours_spent: rand(3)+1, activity: activity, created_at: i.days.ago, updated_at: i.days.ago)
+  end
+end

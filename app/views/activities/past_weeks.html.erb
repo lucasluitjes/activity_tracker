@@ -3,7 +3,7 @@
 </div>
 
 <p>
-  Last week you worked this many hours per day:
+  Last week you spent this many hours per day:
   <ul>
     <li> monday: <%= @monday %> </li>
     <li> tuesday: <%= @tuesday %> </li>
@@ -14,16 +14,16 @@
     <li> sunday: <%= @sunday %> </li>
   </ul>
   <br>
-  Last week you worked <%= less_ugly_decimal(@past_week/7) %> hours per day.
+  Last week you spent <%= less_ugly_decimal(@past_week/7) %> hours per day.
   <br>
-  Two weeks ago you worked <%= less_ugly_decimal(@two_weeks_ago/7) %> hours per day.
+  Two weeks ago you spent <%= less_ugly_decimal(@two_weeks_ago/7) %> hours per day.
   <br>
-  Three weeks ago you worked <%= (less_ugly_decimal@three_weeks_ago/7) %> hours per day.
+  Three weeks ago you spent <%= (less_ugly_decimal@three_weeks_ago/7) %> hours per day.
   <br>
-  Four weeks ago you worked <%= less_ugly_decimal(@four_weeks_ago/7) %> hours per day.
+  Four weeks ago you spent <%= less_ugly_decimal(@four_weeks_ago/7) %> hours per day.
   <br>
-  Last month you worked <%= less_ugly_decimal(@last_month/30) %> hours per day.
+  Last month you spent <%= less_ugly_decimal(@last_month/30) %> hours per day.
   <br>
-  Two months ago you worked <%= less_ugly_decimal(@two_months_ago/30) %> hours per day.
+  Two months ago you spent <%= less_ugly_decimal(@two_months_ago/30) %> hours per day.
   <br>
 </p>

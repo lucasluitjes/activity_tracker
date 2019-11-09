@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.order(hours_per_cycle: :desc).all
+    @activities = Activity.all.sort_by {|n| n.cycle_completion_percentage }
     @recurring_tasks = RecurringTask.order(name: :asc).all
   end
 

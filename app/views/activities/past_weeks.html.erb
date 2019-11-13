@@ -3,6 +3,9 @@
 </div>
 
 <p>
+  <p>
+  Time spent today: <%= less_ugly_decimal(@today) %> hours
+  </p>
   Last week you spent this many hours per day:
   <ul>
     <li> monday: <%= @monday %> </li>
@@ -13,7 +16,6 @@
     <li> saturday: <%= @saturday %> </li>
     <li> sunday: <%= @sunday %> </li>
   </ul>
-  <br>
   Last week you spent <%= less_ugly_decimal(@past_week/7) %> hours per day.
   <br>
   Two weeks ago you spent <%= less_ugly_decimal(@two_weeks_ago/7) %> hours per day.
@@ -25,5 +27,4 @@
   Last month you spent <%= less_ugly_decimal(@last_month/30) %> hours per day.
   <br>
   Two months ago you spent <%= less_ugly_decimal(@two_months_ago/30) %> hours per day.
-  <br>
 </p>

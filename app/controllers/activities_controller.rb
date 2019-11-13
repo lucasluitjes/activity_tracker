@@ -67,6 +67,7 @@ class ActivitiesController < ApplicationController
   end
 
   def past_weeks
+    @today = get_records(Date.today,Date.today + 1).sum(:hours_spent)
     @past_week = get_records(1.week.ago, Date.today).sum(:hours_spent)
     @two_weeks_ago = get_records(2.weeks.ago, 1.week.ago).sum(:hours_spent)
     @three_weeks_ago = get_records(3.weeks.ago, 2.weeks.ago).sum(:hours_spent)

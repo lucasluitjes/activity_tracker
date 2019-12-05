@@ -16,7 +16,8 @@
     <li> saturday: <%= @saturday %> </li>
     <li> sunday: <%= @sunday %> </li>
   </ul>
-  Last week you spent <%= less_ugly_decimal(@past_week/7) %> hours per day.
+
+  The past week plus today you spent <%= less_ugly_decimal(@past_week/8) %> hours per day.
   <br>
   Two weeks ago you spent <%= less_ugly_decimal(@two_weeks_ago/7) %> hours per day.
   <br>

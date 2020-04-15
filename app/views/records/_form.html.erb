@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select(:created_at) %>
+  </div>
+
+  <div class="field">
     <%= form.label :hours_spent %>
     <%= form.text_field :hours_spent %>
   </div>

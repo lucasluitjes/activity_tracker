@@ -40,7 +40,8 @@
   Records
 </h3>
 <div class="list-group">
-  <% @activity.records.each do |record| %>
+  <% recs = @activity.records.sort_by {|n| n.created_at} %>
+  <% recs.reverse.each do |record| %>
     <%= link_to record, class: "list-group-item" do %>
       <%= record.created_at.strftime("%Y-%m-%d %H:%M") %>
       <span class="pull-right">
